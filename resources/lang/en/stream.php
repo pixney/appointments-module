@@ -1,3 +1,7 @@
 <?php
 
-return [];
+return [
+    'appointments' => [
+        'name' => 'Appointments',
+    ],
+];

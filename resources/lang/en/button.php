@@ -1,3 +1,5 @@
 <?php
 
-return [];
+return [
+    'new_appointment' => 'New Appointment',
+];

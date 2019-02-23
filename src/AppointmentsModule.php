@@ -24,6 +24,12 @@ class AppointmentsModule extends Module
      *
      * @var array
      */
-    protected $sections = [];
+    protected $sections = [
+        'appointments' => [
+            'buttons' => [
+                'new_appointment',
+            ],
+        ],
+    ];
 
 }

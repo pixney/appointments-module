@@ -1,6 +1,10 @@
 <?php namespace Pixney\AppointmentsModule;
 
 use Anomaly\Streams\Platform\Addon\AddonServiceProvider;
+use Pixney\AppointmentsModule\Appointment\Contract\AppointmentRepositoryInterface;
+use Pixney\AppointmentsModule\Appointment\AppointmentRepository;
+use Anomaly\Streams\Platform\Model\Appointments\AppointmentsAppointmentsEntryModel;
+use Pixney\AppointmentsModule\Appointment\AppointmentModel;
 use Illuminate\Routing\Router;
 
 class AppointmentsModuleServiceProvider extends AddonServiceProvider
@@ -39,7 +43,11 @@ class AppointmentsModuleServiceProvider extends AddonServiceProvider
      *
      * @type array|null
      */
-    protected $routes = [];
+    protected $routes = [
+        'admin/appointments'           => 'Pixney\AppointmentsModule\Http\Controller\Admin\AppointmentsController@index',
+        'admin/appointments/create'    => 'Pixney\AppointmentsModule\Http\Controller\Admin\AppointmentsController@create',
+        'admin/appointments/edit/{id}' => 'Pixney\AppointmentsModule\Http\Controller\Admin\AppointmentsController@edit',
+    ];
 
     /**
      * The addon middleware.
@@ -93,14 +101,18 @@ class AppointmentsModuleServiceProvider extends AddonServiceProvider
      *
      * @type array|null
      */
-    protected $bindings = [];
+    protected $bindings = [
+        AppointmentsAppointmentsEntryModel::class => AppointmentModel::class,
+    ];
 
     /**
      * The addon singleton bindings.
      *
      * @type array|null
      */
-    protected $singletons = [];
+    protected $singletons = [
+        AppointmentRepositoryInterface::class => AppointmentRepository::class,
+    ];
 
     /**
      * Additional service providers.

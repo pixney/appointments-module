@@ -1,3 +1,9 @@
 <?php
 
-return [];
+return [
+    'appointments' => [
+        'read',
+        'write',
+        'delete',
+    ],
+];
